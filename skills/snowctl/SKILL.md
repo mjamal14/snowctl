@@ -280,7 +280,6 @@ snowctl get users --fields "user_name,email,name,department" -o json
 - **Manifest format**: [references/resources/manifests.md](references/resources/manifests.md)
 - **Troubleshooting**: [references/troubleshooting.md](references/troubleshooting.md)
 - **CLI help**: `snowctl --help`, `snowctl <command> --help`
-- **dtctl (inspiration)**: [github.com/dynatrace-oss/dtctl](https://github.com/dynatrace-oss/dtctl)
 
 ## Safety Reminders
 

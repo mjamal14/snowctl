@@ -26,7 +26,7 @@ var rootCmd = &cobra.Command{
 	Use:   "snowctl",
 	Short: "kubectl-style CLI for ServiceNow",
 	Long: `snowctl is a command-line tool for managing ServiceNow resources.
-It uses familiar verb-noun syntax inspired by kubectl and dtctl.
+It uses familiar verb-noun syntax inspired by kubectl.
 
   snowctl get incidents --query "priority=1"
   snowctl describe incident INC0012345

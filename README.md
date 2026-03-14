@@ -10,7 +10,6 @@ snowctl apply -f incident.yaml
 snowctl logs incident INC0012345 --follow
 ```
 
-Inspired by [dtctl](https://github.com/dynatrace-oss/dtctl) for Dynatrace.
 
 ## Install
 
