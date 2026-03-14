@@ -1,0 +1,11 @@
+apiVersion: snowctl/v1
+kind: Incident
+spec:
+  short_description: "Production database unresponsive"
+  priority: 1
+  urgency: 1
+  impact: 1
+  assignment_group: "Database Administration"
+  description: |
+    The production Oracle database cluster became unresponsive
+    at approximately 09:15 UTC. All dependent services affected.

@@ -1,0 +1,9 @@
+apiVersion: snowctl/v1
+kind: Change
+spec:
+  short_description: "Deploy database patch v2.3.1"
+  type: Standard
+  assignment_group: "Database Administration"
+  description: |
+    Deploy the latest database patch to address the
+    connection pooling issue identified in PRB0001234.

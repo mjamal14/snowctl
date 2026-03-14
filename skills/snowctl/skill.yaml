@@ -1,0 +1,62 @@
+name: snowctl
+description: CLI for managing ServiceNow platform resources — incidents, changes, problems, CMDB, users, and more.
+version: 0.1.0
+
+instructions: |
+  You have access to `snowctl`, a kubectl-style CLI for ServiceNow. Use it to query, create, update, and delete ServiceNow records.
+
+  ## Quick start
+  - List resources: `snowctl get <resource> [--query <encoded_query>] [--limit <n>]`
+  - View details: `snowctl describe <resource> <name-or-sysid>`
+  - Create: `snowctl create <resource> --set key=value`
+  - Update: `snowctl edit <resource> <name-or-sysid>`
+  - Declarative: `snowctl apply -f manifest.yaml`
+  - Delete: `snowctl delete <resource> <name-or-sysid> --yes`
+
+  ## Output
+  - Default is a human-readable table
+  - Use `-o json` for structured data you can parse
+  - Use `--agent` for a JSON envelope with ok/result/error/context fields
+
+  ## Resources
+  incidents (inc), changes (chg), problems (prb), requests (req), request-items (ritm),
+  tasks, users (usr), groups (grp), cis, servers (srv), applications (app),
+  services (svc), kb-articles (kb), catalog-items (catitem).
+  Any unknown name is treated as a raw ServiceNow table name.
+
+  ## Query syntax
+  ServiceNow encoded query format: `field=value^field2=value2`
+  Operators: =, !=, LIKE, STARTSWITH, ENDSWITH, IN, ORDERBY, ORDERBYDESC
+  Example: `priority=1^active=true^ORDERBYDESCsys_updated_on`
+
+  ## Tips
+  - Always use `--agent` flag for structured output when automating
+  - Use `snowctl commands -o json` to get the full command catalog
+  - Use `snowctl doctor` to verify connectivity before making API calls
+  - Pipe `-o json` output to jq for filtering: `snowctl get inc -o json | jq '.[].number'`
+
+tools:
+  - name: get
+    description: List resources from a ServiceNow table
+    usage: snowctl get <resource> [--query <q>] [--limit <n>] [--offset <n>] [--fields <f1,f2>] [-o json|yaml] [--agent]
+  - name: describe
+    description: Show full details of a single record
+    usage: snowctl describe <resource> <name-or-sysid> [-o json|yaml] [--agent]
+  - name: create
+    description: Create a new record
+    usage: snowctl create <resource> --set key=value [--from-json '{}']
+  - name: apply
+    description: Declarative create-or-update from YAML manifest
+    usage: snowctl apply -f <file.yaml|dir/> [--dry-run]
+  - name: delete
+    description: Delete a record
+    usage: snowctl delete <resource> <name-or-sysid> [--yes]
+  - name: config
+    description: Manage contexts (ServiceNow instances)
+    usage: snowctl config <set-context|use-context|get-contexts|view|delete-context>
+  - name: doctor
+    description: Verify connectivity and authentication
+    usage: snowctl doctor
+  - name: commands
+    description: Machine-readable command catalog
+    usage: snowctl commands [-o json]
